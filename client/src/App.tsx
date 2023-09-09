@@ -7,6 +7,10 @@ import {
   faSpinner,
 } from '@fortawesome/free-solid-svg-icons'
 
+const server_url: string = import.meta.env.VITE_REACT_APP_SERVER_URL || ''
+const unsplash_access_key: string =
+  import.meta.env.VITE_REACT_APP_UNSPLASH_ACCESS_KEY || ''
+
 const App: React.FC = () => {
   const [searchValue, setSearchValue] = useState<string>('')
   const [bgImage, setBgImage] = useState<string>('')
@@ -30,7 +34,7 @@ const App: React.FC = () => {
   const handleSearch = () => {
     setLoading(true)
     axios
-      .post(`${import.meta.env.VITE_REACT_APP_SERVER_URL}/search`, {
+      .post(`${server_url}/search`, {
         query: searchValue,
       })
       .then((response) => {
@@ -50,7 +54,7 @@ const App: React.FC = () => {
     setFooterLoading(true)
 
     axios
-      .post(`${import.meta.env.VITE_REACT_APP_SERVER_URL}/chat`, {
+      .post(`${server_url}/chat`, {
         search_chatbot_result: message,
         user_input: footerSearchValue,
       })
@@ -110,9 +114,7 @@ const App: React.FC = () => {
   useEffect(() => {
     axios
       .get(
-        `https://api.unsplash.com/photos/random?query=nature&client_id=${
-          import.meta.env.VITE_REACT_APP_UNSPLASH_ACCESS_KEY
-        }`,
+        `https://api.unsplash.com/photos/random?query=nature&client_id=${unsplash_access_key}`,
       )
       .then((response) => {
         setBgImage(response.data.urls.full)
