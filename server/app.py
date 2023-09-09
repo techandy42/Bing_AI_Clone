@@ -13,6 +13,14 @@ app = Flask(__name__)
 
 CORS(app, resources={r"/*": {"origins": "https://bing-ai-clone.netlify.app"}})
 
+# Add CORS headers to every response
+@app.after_request
+def add_cors_headers(response):
+    response.headers.add('Access-Control-Allow-Origin', 'https://bing-ai-clone.netlify.app')
+    response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
+    response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE')
+    return response
+
 # Define routes
 @app.route('/')
 def hello_world():
