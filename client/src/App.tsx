@@ -30,10 +30,9 @@ const App: React.FC = () => {
   const handleSearch = () => {
     setLoading(true)
     axios
-      .post('http://127.0.0.1:5000/search', { query: searchValue })
+      .post(`${import.meta.env.VITE_SERVER_URL}/search`, { query: searchValue })
       .then((response) => {
         const { message } = response.data
-        console.log("message:", message)
         setMessage(message)
       })
       .catch((error) => {
@@ -49,7 +48,7 @@ const App: React.FC = () => {
     setFooterLoading(true)
 
     axios
-      .post('http://127.0.0.1:5000/chat', {
+      .post(`${import.meta.env.VITE_SERVER_URL}/chat`, {
         search_chatbot_result: message,
         user_input: footerSearchValue,
       })
