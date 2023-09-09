@@ -11,8 +11,7 @@ load_dotenv()
 # Initialize the Flask application
 app = Flask(__name__)
 
-# Enable CORS for all routes
-CORS(app)
+CORS(app, resources={r"/*": {"origins": "https://bing-ai-clone.netlify.app"}})
 
 # Define routes
 @app.route('/')
