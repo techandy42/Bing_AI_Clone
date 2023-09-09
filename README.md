@@ -14,8 +14,8 @@
 
 > Web-Search Example
 
- ![Web-Search Example Image]()
+ ![Web-Search Example Image](./bing_ai_clone_search.PNG)
 
 > Chatbot Prompt Example
 
-![Chatbot Prompt Example Image]()
+![Chatbot Prompt Example Image](./bing_ai_clone_chat.PNG)
