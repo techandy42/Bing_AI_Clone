@@ -35,8 +35,3 @@ def chat():
     extracted_links = extract_urls(search_chatbot_result)
     chatbot_response = fetch_and_answer(extracted_links, user_input)
     return jsonify({"message": chatbot_response})
-
-# Run the application
-if __name__ == '__main__':
-    app.run(debug=True)
-
