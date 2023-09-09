@@ -30,7 +30,9 @@ const App: React.FC = () => {
   const handleSearch = () => {
     setLoading(true)
     axios
-      .post(`${import.meta.env.VITE_SERVER_URL}/search`, { query: searchValue })
+      .post(`${import.meta.env.VITE_REACT_APP_SERVER_URL}/search`, {
+        query: searchValue,
+      })
       .then((response) => {
         const { message } = response.data
         setMessage(message)
@@ -48,7 +50,7 @@ const App: React.FC = () => {
     setFooterLoading(true)
 
     axios
-      .post(`${import.meta.env.VITE_SERVER_URL}/chat`, {
+      .post(`${import.meta.env.VITE_REACT_APP_SERVER_URL}/chat`, {
         search_chatbot_result: message,
         user_input: footerSearchValue,
       })
@@ -109,7 +111,7 @@ const App: React.FC = () => {
     axios
       .get(
         `https://api.unsplash.com/photos/random?query=nature&client_id=${
-          import.meta.env.VITE_UNSPLASH_ACCESS_KEY
+          import.meta.env.VITE_REACT_APP_UNSPLASH_ACCESS_KEY
         }`,
       )
       .then((response) => {
